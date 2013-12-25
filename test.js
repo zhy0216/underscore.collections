@@ -4,10 +4,11 @@ require("./underscore.collection");
 
 describe('Counter', function(){
     var data = [1,2,3,4,1,3,3];
-    var count = new _.Counter(data);
+    
 
     describe('#init', function(){
         it("should count the array", function(){
+            var count = new _.Counter(data);
             assert.equal(count['1'], 2);
             assert.equal(count['2'], 1);
             assert.equal(count['3'], 3);
@@ -19,6 +20,7 @@ describe('Counter', function(){
     describe('#element()', function(){
         it("should return the same arrary except ordering", function(){
             // value type problem
+            var count = new _.Counter(data);
             assert.equal(count.elements().length, data.length);
         });
     });   
@@ -32,6 +34,7 @@ describe('Counter', function(){
 
     describe('#subtract(anotherCounter)', function(){
         it("should subtracted from counter.", function(){
+            var count = new _.Counter(data);
             var anotherCounter = new _.Counter([1,1,1,2,3,5])      
             count.subtract(anotherCounter);
             assert.equal(count['1'], -1);
@@ -44,9 +47,49 @@ describe('Counter', function(){
 
     })
 
-
-
 });
+
+
+describe('Set', function(){
+    
+    describe('#construct', function(){
+        var set = new _.Set([1,2,2,4]);
+        assert.ok(1 in set);
+    })
+
+    describe('#add', function(){
+        var set = new _.Set([1,2,2,4]);
+        assert.ok(!(7 in set));
+        set.add(7)
+        assert.ok(7 in set);
+
+    })
+
+    describe('#remove', function(){
+        var set = new _.Set([1,2,2,4]);
+        assert.ok(2 in set);
+        set.remove(2)
+        assert.ok(!(2 in set));
+    })
+
+    describe('#has', function(){
+        var set = new _.Set([1,2,2,4]);
+        set.a = 1;
+        assert.ok(!set.has("a"));
+        set.a = null;
+        assert.ok(set.has("a"));
+    })
+
+    describe('#clear', function(){
+        var set = new _.Set([1,2,2,4]);
+        assert.ok(set.has(1));
+        set.clear();
+        assert.ok(!set.has(1));
+    })
+
+
+})
+
 
 
 

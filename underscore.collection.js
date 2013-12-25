@@ -75,17 +75,46 @@
         return self;
   }// 
 
+  _.Set = function(arraryData){
+        var self = {};
 
 
+        function init(){
+            _.each(arraryData, function(v, i){
+                self.add(v);
+            })
+        }
 
+        self.add = function(v){
+            if(! self.has(v)){
+                self[v] = null;
+            }
+            return self;
+        }
 
-  _.OrderDictionary = function(dict, key){
+        self.remove = self.discard = function(v){
+            delete self[v]
+        }
 
+        self.clear = function(){
+            _.each(self, function(v, k){
+                if(self.has(k)){
+                    self.remove(k)
+                }
+            })
+        }
 
+        self.has = function(v){
+            return self[v] === null;
+        }
 
+        init();
 
-
+        return self;
   }
+
+
+
 
 
 
