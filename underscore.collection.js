@@ -43,6 +43,7 @@
                 array = array.concat(_.fillArray(k, v));
             })
             if(typef){
+                console.log(array)
                 return _.map(array, typef);
             }
             return array;
@@ -111,6 +112,45 @@
         init();
 
         return self;
+  }
+
+  _.Dequeue = function(){
+    var self = {};
+    var array = [];
+
+    // Add x to the right side of the deque
+    self.append = array.push;
+
+    // Add x to the left side of the deque.
+    self.append = array.unshift;
+
+
+    // Remove all elements from the deque leaving it with length 0
+    self.clear = function(){
+        array = [];
+        return self;
+    }
+
+    // Count the number of deque elements equal to x.
+    self.count = function(x){
+        return _.countBy(array, function(n){
+                    return n == x;
+                })[true];
+    }
+
+    // Extend the right side of the deque by appending 
+    // elements from the iterable argument.
+    self.extend = function(anotherArrary){
+        array = array.concat(anotherArrary);
+        return self;
+    }
+
+    // self.extendleft = null
+
+    //Reverse the elements of the deque in-place 
+    self.reverse = array.reverse;
+
+
   }
 
 
