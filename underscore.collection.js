@@ -95,7 +95,10 @@
         }
 
         self.remove = self.discard = function(v){
-            delete self[v]
+            if(self.has(v)){
+                delete self[v]
+            }
+            return self;
         }
 
         self.clear = function(){
@@ -104,6 +107,7 @@
                     self.remove(k)
                 }
             })
+            return self;
         }
 
         self.has = function(v){
