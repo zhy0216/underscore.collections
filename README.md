@@ -56,17 +56,45 @@ Set
 ------------
 
 ### construct
-
+parameter: array
 
 ### add
+add a element, it is chain-call.
 
+```js
+var set = new _.Set([1,2,2,4]);
+
+>>> 1 in set
+true
+
+>>> 7 in set
+false
+
+// after run the next line
+`set.add(7)`
+
+>>> 7 in set
+true
+```
 
 ### remove
+remove a element
+
+```js
+var set = new _.Set([1,2,2,4]);
+>>> 2 in set
+true
+`set.remove(2)`
+
+>>> 2 in set
+false
+```
 
 ### has
-
+check if a element in a set
 
 ### clear
+remove all elements from set
 
 Extra
 -----------
@@ -75,6 +103,8 @@ Extra
 this function will return a array which is filled with the `value`s, the length is `len`.
 
 ```js
+
+// source code
 _.fillArray = function(value, len) {
     var arr = [],
         i;

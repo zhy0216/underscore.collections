@@ -50,7 +50,7 @@
         }
 
         self.most_common = function(n, typef){
-            // user orderdictionary 
+            // user orderdictionary
         }
 
         self.subtract = function(anotherCounter){
@@ -74,13 +74,14 @@
 
 
         return self;
-  }// 
+  }//
 
   _.Set = function(arraryData){
         var self = {};
 
 
         function init(){
+            arraryData = arraryData || []
             _.each(arraryData, function(v, i){
                 self.add(v);
             })
@@ -138,7 +139,7 @@
                 })[true];
     }
 
-    // Extend the right side of the deque by appending 
+    // Extend the right side of the deque by appending
     // elements from the iterable argument.
     self.extend = function(anotherArrary){
         array = array.concat(anotherArrary);
@@ -147,7 +148,7 @@
 
     // self.extendleft = null
 
-    //Reverse the elements of the deque in-place 
+    //Reverse the elements of the deque in-place
     self.reverse = array.reverse;
 
 
