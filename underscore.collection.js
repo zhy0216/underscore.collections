@@ -17,7 +17,7 @@
             i, // for loop index
             length, // for loop length
             value // fetch the array value by index
-            ;
+        ;
 
         self._dict = {};
 
@@ -48,8 +48,19 @@
             return array;
         }
 
-        self.most_common = function(n, typef) {
+        self.mostCommon = function(n) {
             // user orderdictionary
+            var result = _.pairs(self._dict);
+
+            result = _.sortBy(result, function(x) {
+                return -x[1];
+            });
+
+            if (n) {
+                result = result.slice(0, n);
+            }
+
+            return result
         }
 
         self.subtract = function(anotherCounter) {
