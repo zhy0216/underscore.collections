@@ -99,3 +99,18 @@ describe('Set', function() {
 
 
 })
+
+
+
+describe('Deque', function() {
+    var data = [1, 2, 3];
+    describe('#constructor', function() {
+        var deque = new _.Deque(data);
+        assert.equal(deque.length(), 3);
+    })
+
+    describe('#lappend', function() {
+        var deque = new _.Deque(data);
+        assert.equal(deque.length(), 3);
+    })
+})

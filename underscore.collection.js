@@ -129,15 +129,26 @@
         return self;
     }
 
-    _.Dequeue = function() {
+    _.Deque = function(arraryData) {
         var self = {};
         var array = [];
 
+        function init() {
+            arraryData = arraryData || []
+            _.each(arraryData, function(v, i) {
+                self.append(v);
+            })
+        }
+
         // Add x to the right side of the deque
-        self.append = array.push;
+        self.append = function(x) {
+            array.push(x);
+        }
 
         // Add x to the left side of the deque.
-        self.append = array.unshift;
+        self.lappend = function(x) {
+            array.unshift(x);
+        }
 
 
         // Remove all elements from the deque leaving it with length 0
@@ -165,6 +176,13 @@
         //Reverse the elements of the deque in-place
         self.reverse = array.reverse;
 
+        self.length = function() {
+            return array.length
+        }
+
+        init()
+
+        return self;
 
     }
 
