@@ -124,6 +124,7 @@ describe('Deque', function() {
     describe('#count', function() {
         var data = [1, 1, 2, 2, 2]
         var deque = new _.Deque(data);
+        assert.equal(deque.count(), 0);
         assert.equal(deque.count(0), 0);
         assert.equal(deque.count(1), 2);
         assert.equal(deque.count(2), 3);

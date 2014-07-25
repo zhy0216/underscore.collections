@@ -73,6 +73,49 @@ count.subtract(anotherCounter);
 -1
 ```
 
+Deque
+------------
+
+### construct
+`parameter`: **array**
+
+### append
+`parameter`: **value**
+
+Add value to the right side of the deque
+
+### appendleft
+`parameter`: **value**
+
+Add value to the left side of the deque
+
+### clear
+
+Remove all elements from the deque leaving it with length 0
+
+### count 
+`parameter`: **value**
+
+Count the number of deque elements equal to value. If not parameter provides, it will return 0;
+
+### extend
+`parameter`: **array**
+
+Extend the right side of the deque by appending elements from the iterable argument.
+
+### extendleft
+`parameter`: **array**
+
+Extend the left side of the deque by appending elements from the iterable argument.
+
+### reverse
+
+Reverse the elements of the deque in-place
+
+### length
+
+Get the length of the deque
+
 Set
 ------------
 

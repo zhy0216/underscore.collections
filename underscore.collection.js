@@ -157,6 +157,7 @@
 
         // Count the number of deque elements equal to x.
         self.count = function(x) {
+            x = x || Object()
             return _.filter(array, function(n) {
                 return n == x;
             }).length;
