@@ -74,6 +74,7 @@
             })
         }
 
+        // TODO
         self.update = function(arraryData) {
 
         }
@@ -210,7 +211,7 @@
     /* An OrderedDict is a dict that remembers the order that 
      keys were first inserted. 
      If a new entry overwrites an existing entry,
-     the original insertion position is left unchanged
+     the original insertion position is unchanged
   */
     _.OrderedDict = function() {
         var self = {};
@@ -219,11 +220,7 @@
         self.length = 0;
 
         self.put = function(k, v) {
-            if (k in self._dict) {
-                self.remove(k);
-                self.put(k, v);
-
-            } else {
+            if (!(k in self._dict)) {
                 self._dict[k] = v;
                 self._keys.push(k);
                 self.length++;
@@ -243,6 +240,7 @@
             if (k in self._dict) {
                 self._key_remove(self._keys.indexOf(k));
                 delete self._dict[k];
+                self.length--;
             }
         }
 
@@ -255,7 +253,10 @@
         }
 
         self.hasKey = function(k) {
-            return k in self._dict;
+            return _.filter(self._keys, function(x) {
+                return x === k;
+            }).length != 0;
+
         }
         return self;
 
