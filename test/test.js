@@ -188,5 +188,12 @@ describe('OrderedDict', function() {
         assert.equal(od.hasKey("1"), false);
     })
 
+    describe("#get", function() {
+        init();
+        assert.equal(od.get(1), "one");
+        assert.equal(od.get(5), undefined);
+        assert.equal(od.get("1"), undefined);
+    })
+
 
 })

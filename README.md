@@ -75,6 +75,7 @@ count.subtract(anotherCounter);
 
 Deque
 ------------
+Deques are a generalization of stacks and queues (the name is pronounced “deck” and is short for “double-ended queue”). 
 
 ### construct
 `parameter`: **array**
@@ -118,6 +119,7 @@ Get the length of the deque
 
 Set
 ------------
+Set is for constructing and manipulating unordered collections of unique elements.
 
 ### construct
 `parameter`: **array**
@@ -163,6 +165,34 @@ check if a element in a set
 
 ### clear
 remove all elements from set
+
+OrderedDict
+------------
+An OrderedDict is a dict that remembers the order that keys were first inserted. If a new entry overwrites an existing entry, the original insertion position is unchanged
+
+### put
+`parameter`: **key**, **value**
+
+if the key is in the ordereddict, then nothing happened; otherwise, it will insert the key and value into the ordereddict;
+
+### remove
+`parameter`: **key**
+
+remove a key-value by key; if the key is not in the ordereddict, nothing happened; 
+
+### keys
+
+return an array which contains the keys in the inserting ordered.
+
+### get
+`parameter`: **key**
+
+return a value by key; if key is not in the ordereddict, the function will return `undefined`;
+
+### hasKey
+`parameter`: **key**
+
+check if a key exists;
 
 Extra
 -----------

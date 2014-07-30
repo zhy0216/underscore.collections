@@ -242,10 +242,14 @@
                 delete self._dict[k];
                 self.length--;
             }
+            return self;
         }
 
         self.get = function(k) {
-            return self._dict[k];
+            if (self.hasKey(k)) {
+                return self._dict[k];
+            }
+            return undefined;
         }
 
         self.keys = function() {
