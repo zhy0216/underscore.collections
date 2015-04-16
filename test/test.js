@@ -86,12 +86,13 @@ describe('Set', function() {
         var set = new _.Set([1, 2, 2, 4]);
         set.a = 1;
         assert.ok(!set.has("a"));
-        set.a = null;
+        set.a = set.__;
         assert.ok(set.has("a"));
     })
 
     describe('#clear', function() {
         var set = new _.Set([1, 2, 2, 4]);
+        console.log(set);
         assert.ok(set.has(1));
         set.clear();
         assert.ok(!set.has(1));

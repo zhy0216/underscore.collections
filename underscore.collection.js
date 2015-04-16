@@ -87,8 +87,16 @@
         return self;
     } //
 
+
+
+    // reconsider 
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
+    // use dict to simulate a set is not right because the key in js's dict
+    // is always string.
+
     _.Set = function(arraryData) {
         var self = {};
+        self.__ = new Object();
 
 
         function init() {
@@ -100,7 +108,7 @@
 
         self.add = function(v) {
             if (!self.has(v)) {
-                self[v] = null;
+                self[v] = self.__;
             }
             return self;
         }
@@ -114,15 +122,16 @@
 
         self.clear = function() {
             _.each(self, function(v, k) {
-                if (self.has(k)) {
-                    self.remove(k)
+                if (self.has(k) && k !== "__") {
+                    console.log("remove " + k + ":" + v)
+                    self.remove(k);
                 }
             })
             return self;
         }
 
         self.has = function(v) {
-            return self[v] === null;
+            return self[v] === self.__;
         }
 
         init();
