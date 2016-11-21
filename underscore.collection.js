@@ -19,9 +19,7 @@
             value // fetch the array value by index;
 
         self._dict = {};
-        for (i = 0, length = arraryData.length; i < length;
-
-            i++) {
+        for (i = 0, length = arraryData.length; i < length; i++) {
             value = arraryData[i];
 
             if (value in self._dict) {
@@ -212,47 +210,10 @@
 
         self._dict = {};
         self._keys = [];
-        //key in order
-        self.length = 0;
-
-        self.put = function(k, v) {
-            if (!(k in self._dict)) {
-                self._dict[k] = v;
-                self._keys.push(k);
-                self.length++;
-            }
-            return self;
-        }
-        //http://ejohn.org/blog/javascript-array-remove/
-        self._key_remove = function(from, to) {
-            var rest = self._keys.slice((to || from) + 1 || self._keys.length);
-            self._keys.length = from < 0 ? self._keys.length + from : from;
-            return Array.prototype.push.apply(self._keys, rest);
-        };
-
-        self.remove = function(k) {
-            if (k in self._dict) {
-                self._key_remove(self._keys.indexOf(k));
-                delete self._dict[k];
-                self.length--;
-            }
-            return self;
-        }
-        self.get = function(k) {
-            if (self.hasKey(k)) {
-                return self._dict[k];
-            }
-            return undefined;
-        }
-        self.keys = function() {
-            return self._keys;
-        }
-        self.hasKey = function(k) {
-            return _.filter(self._keys, function(x) {
-                return x === k;
-            }).length != 0;
-        }
-        return self;
+        // change 
     }
 }
 (this, require("underscore"));
+
+
+

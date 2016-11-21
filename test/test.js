@@ -62,27 +62,26 @@ describe('Counter', function() {
 
 describe('Set', function() {
 
-    describe('#construct', function() {
+    it('#construct', function() {
         var set = new _.Set([1, 2, 2, 4]);
         assert.ok(1 in set);
     })
 
-    describe('#add', function() {
+    it('#add', function() {
         var set = new _.Set([1, 2, 2, 4]);
         assert.ok(!(7 in set));
         set.add(7)
         assert.ok(7 in set);
-
     })
 
-    describe('#remove', function() {
+    it('#remove', function() {
         var set = new _.Set([1, 2, 2, 4]);
         assert.ok(2 in set);
         set.remove(2)
         assert.ok(!(2 in set));
     })
 
-    describe('#has', function() {
+    it('#has', function() {
         var set = new _.Set([1, 2, 2, 4]);
         set.a = 1;
         assert.ok(!set.has("a"));
@@ -90,7 +89,7 @@ describe('Set', function() {
         assert.ok(set.has("a"));
     })
 
-    describe('#clear', function() {
+    it('#clear', function() {
         var set = new _.Set([1, 2, 2, 4]);
         
         assert.ok(set.has(1));
@@ -105,24 +104,24 @@ describe('Set', function() {
 
 describe('Deque', function() {
     var data = [1, 2, 3];
-    describe('#constructor', function() {
+    it('#constructor', function() {
         var deque = new _.Deque(data);
         assert.equal(deque.length(), 3);
     })
 
-    describe('#appendleft', function() {
+    it('#appendleft', function() {
         var deque = new _.Deque(data);
         deque.appendleft(0);
         assert.equal(deque.getValues()[0], 0);
     })
 
-    describe('#clear', function() {
+    it('#clear', function() {
         var deque = new _.Deque(data);
         deque.clear();
         assert.equal(deque.length(), 0);
     })
 
-    describe('#count', function() {
+    it('#count', function() {
         var data = [1, 1, 2, 2, 2]
         var deque = new _.Deque(data);
         assert.equal(deque.count(), 0);
@@ -131,7 +130,7 @@ describe('Deque', function() {
         assert.equal(deque.count(2), 3);
     })
 
-    describe('#extend', function() {
+    it('#extend', function() {
         var data_new = [1, 1, 2, 2, 2]
         var deque = new _.Deque(data);
         deque.extend(data_new);
@@ -139,7 +138,7 @@ describe('Deque', function() {
         assert.equal(deque.getValues()[7], 2);
     })
 
-    describe('#extendleft', function() {
+    it('#extendleft', function() {
         var data_new = [9, 1, 2, 2, 2]
         var deque = new _.Deque(data);
         deque.extendleft(data_new);
@@ -147,7 +146,7 @@ describe('Deque', function() {
         assert.equal(deque.getValues()[0], 9);
     })
 
-    describe('#reverse', function() {
+    it('#reverse', function() {
         var deque = new _.Deque(data);
         deque.reverse();
         assert.equal(deque.getValues()[0], 3);
@@ -156,45 +155,48 @@ describe('Deque', function() {
 })
 
 
-describe('OrderedDict', function() {
-    var od;
+// describe('OrderedDict', function() {
+//     var od;
 
-    function init() {
-        od = _.OrderedDict();
-        od.put(1, "one");
-        od.put(2, "two");
-        od.put(3, "three");
-    }
-
-
-    describe("#put", function() {
-        init();
-        assert.equal(od.length, 3);
-        od.put(1, "one");
-        assert.equal(od.length, 3);
-        assert.equal(od.get(1), "one");
-        assert.equal(od.keys()[0], 1);
-    })
-
-    describe("#remove", function() {
-        init();
-        assert.equal(od.length, 3);
-        od.remove(2);
-        assert.equal(od.length, 2);
-    })
-
-    describe("#hasKey", function() {
-        init();
-        assert.equal(od.hasKey(1), true);
-        assert.equal(od.hasKey("1"), false);
-    })
-
-    describe("#get", function() {
-        init();
-        assert.equal(od.get(1), "one");
-        assert.equal(od.get(5), undefined);
-        assert.equal(od.get("1"), undefined);
-    })
+//     function init() {
+//         od = _.OrderedDict();
+//         od.put(1, "one");
+//         od.put(2, "two");
+//         od.put(3, "three");
+//     }
 
 
-})
+//     describe("#put", function() {
+//         init();
+//         assert.equal(od.length, 3);
+//         od.put(1, "one");
+//         assert.equal(od.length, 3);
+//         assert.equal(od.get(1), "one");
+//         assert.equal(od.keys()[0], 1);
+//     })
+
+//     describe("#remove", function() {
+//         init();
+//         assert.equal(od.length, 3);
+//         od.remove(2);
+//         assert.equal(od.length, 2);
+//     })
+
+//     describe("#hasKey", function() {
+//         init();
+//         assert.equal(od.hasKey(1), true);
+//         assert.equal(od.hasKey("1"), false);
+//     })
+
+//     describe("#get", function() {
+//         init();
+//         assert.equal(od.get(1), "one");
+//         assert.equal(od.get(5), undefined);
+//         assert.equal(od.get("1"), undefined);
+//     })
+
+
+// })
+
+
+
