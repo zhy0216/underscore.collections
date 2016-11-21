@@ -1,0 +1,32 @@
+{
+  "name": "underscore.collections",
+  "version": "1.0.0",
+  "description": "A underscore extension which provides some useful data structure",
+  "main": "underscore.collection.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "underscore": "^1.6.0"
+  },
+  "devDependencies": {
+    "mocha": "^1.20.1"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhy0216/underscore.collections.git"
+  },
+  "keywords": [
+    "underscore",
+    "collections"
+  ],
+  "author": "im_yangz <zhy0216@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zhy0216/underscore.collections/issues"
+  },
+  "homepage": "https://github.com/zhy0216/underscore.collections#readme"
+}

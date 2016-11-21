@@ -3,6 +3,17 @@ underscore.collections
 
 **under development**
 
+[ ] add linkedlist
+[ ] add doubledlinkedlist
+[ ] add heap
+[ ] add hashheap
+[ ] add unionfind
+[ ] add trie
+[ ] add segment tree (2d version ???)
+[ ] change ordereddict
+[ ] try b-tree?
+[ ] complete testcases
+ 
 A underscore extension which provides some useful data structure, inspred by [python collection](http://docs.python.org/2/library/collections.html)
 
 click [here](http://zhy0216.github.io/underscore.collections/) to see a flatdoc.
