@@ -1,6 +1,6 @@
 {
   "name": "underscore.collections",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A underscore extension which provides some useful data structure",
   "main": "underscore.collection.js",
   "directories": {
