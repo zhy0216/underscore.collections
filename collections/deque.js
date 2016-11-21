@@ -23,7 +23,6 @@ _.Deque = function(arraryData) {
     }
     // Count the number of deque elements equal to x.
     self.count = function(x) {
-        x = x || Object()
         return _.filter(array, function(n) {
             return n == x;
         }).length;
@@ -34,7 +33,12 @@ _.Deque = function(arraryData) {
         array = array.concat(anotherArrary);
         return self;
     }
+    // note for concat
+    // The concat() method is used to merge two or more arrays. 
+    // This method does not change the existing arrays, but instead returns a new array.
     self.extendleft = function(anotherArrary) {
+        // unshift it will faster?
+        // do this test later
         array = anotherArrary.concat(array);
         return self;
     }
@@ -59,6 +63,35 @@ _.Deque = function(arraryData) {
     self.copy = function() {
         return _.Deque(array.slice(0));
     }
+    // Remove and return an element from the right side of the deque. 
+    // If no elements are present, raises an .IndexException.
+    self.pop = function(silence){
+        if(array.length === 0 && silence === false){
+            throw new Error("Index Exception")
+        }
+        return array.pop()
+    }
+    self.popleft = function(silence){
+        if(array.length === 0 && silence === false){
+            throw new Error("Index Exception")
+        }
+        return array.shift()
+    }
+    // Rotate the deque n steps to the right. 
+    // If n is negative, rotate to the left.
+    self.rotate = function(step) {
+        while(step > 0){
+            self.appendleft(self.pop())
+            step--;
+        }
+
+        while(step < 0){
+            self.append(self.popleft())
+            step++;
+        }
+    }
+
+
     init()
 
     return self;
