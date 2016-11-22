@@ -26,9 +26,10 @@ _.collections.fastKey = function(obj) {
 
 // inject colletions
 require("./collections/counter")
+require("./collections/deque") // this one need to be implemented by doublelinkedlist
+require("./collections/linkedlist")
 require("./collections/extra")
 require("./collections/set")
-require("./collections/deque")
 require("./collections/ordereddict")
 
 

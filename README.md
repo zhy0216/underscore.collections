@@ -3,8 +3,8 @@ underscore.collections
 
 **under development**
 
-- [ ] add linkedlist
-- [ ] add doubledlinkedlist
+- [x] add linkedlist
+- [x] add doubledlinkedlist
 - [ ] add heap
 - [ ] add hashheap
 - [ ] add unionfind
