@@ -6,21 +6,22 @@ describe('Set', function() {
 
     it('#construct', function() {
         var set = new _.Set([1, 2, 2, 4]);
-        assert.ok(1 in set);
+        assert.ok(set.has(1));
+        assert.equal(set.length, 3);
     })
 
     it('#add', function() {
         var set = new _.Set([1, 2, 2, 4]);
-        assert.ok(!(7 in set));
+        assert.ok(!set.has(7));
         set.add(7)
-        assert.ok(7 in set);
+        assert.ok(set.has(7));
     })
 
     it('#remove', function() {
         var set = new _.Set([1, 2, 2, 4]);
-        assert.ok(2 in set);
+        assert.ok(set.has(2));
         set.remove(2)
-        assert.ok(!(2 in set));
+        assert.ok(!set.has(2));
     })
 
     it('#has', function() {

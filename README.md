@@ -11,6 +11,7 @@ underscore.collections
 - [ ] add trie
 - [ ] add segment tree (2d version ???)
 - [x] change deque
+- [x] change set
 - [ ] change counter
 - [ ] change ordereddict
 - [ ] try b-tree?

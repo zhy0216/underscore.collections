@@ -3,8 +3,15 @@ var _ = require("underscore");
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
 
 _.Set = function(arraryData) {
-    var self = {};
+    var self = new Object();
+    var dict = {};
     var __ = new Object();
+    var _length = 0;
+    function lengthAdd(v){
+        _length += v;
+        self.length = _length;
+    }
+
 
     function init() {
         arraryData = arraryData || []
@@ -12,44 +19,37 @@ _.Set = function(arraryData) {
             self.add(v);
         })
     }
-    self._hash = JSON.stringify;
+
+    self._hash = _.collections.fastKey;
 
     self.add = function(v) {
         var v = self._hash(v);
 
         if (!self._has(v)) {
-            self[v] = __;
+            dict[v] = __;
+            lengthAdd(1)
         }
         return self;
     }
     self.remove = self.discard = function(v) {
         var v = self._hash(v);
-
         if (self._has(v)) {
-            delete self[v]
-        }
-        return self;
-    }
-    self._remove = function(hash) {
-        if (self._has(hash)) {
-            delete self[hash]
+            delete dict[v]
+            lengthAdd(-1)
         }
         return self;
     }
     self.clear = function() {
-        _.each(self, function(v, k) {
-            if (self._has(k)) {
-                self._remove(k);
-            }
-        })
+        dict = {}
+        lengthAdd(-_length)
         return self;
     }
     self._has = function(hash) {
-        return self[hash] === __;
+        return dict[hash] === __;
     }
     self.has = function(v) {
         var v = self._hash(v);
-        return self[v] === __;
+        return dict[v] === __;
     }
     init();
     return self;
