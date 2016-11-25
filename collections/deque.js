@@ -1,3 +1,4 @@
+'use strict'
 var _ = require("underscore");
 
 /**
@@ -11,11 +12,14 @@ var _ = require("underscore");
  */
 _.Deque = function(arraryData) {
     var self = {};
-    var array = [];
+    var ll = null;
+    self.length = 0
     
     function init() {
         // http: //stackoverflow.com/a/7486130
-        array = (arraryData || []).slice(0)
+        arraryData = arraryData || []
+        ll = new _.LinkedList(arraryData)
+        self.length = arraryData.length;
     }
     /** 
      * Add x to the right side of the deque
@@ -24,7 +28,8 @@ _.Deque = function(arraryData) {
      * @member _.Deque#append
      */
     self.append = function(x) {
-        array.push(x);
+        ll.append(new _.LinkedNode(x));
+        self.length ++;
     }
     /** 
      * Add x to the left side of the deque
@@ -32,14 +37,16 @@ _.Deque = function(arraryData) {
      * @param {any} x 
      */
     self.appendleft = function(x) {
-        array.unshift(x);
+        ll.preappend(new _.LinkedNode(x));
+        self.length ++;
     }
     /** 
      * Remove all elements from the deque leaving it with length 0
      * @member _.Deque#clear
      */
     self.clear = function() {
-        array = [];
+        ll = new _.LinkedList();
+        self.length = 0;
         return self;
     }
     /** 
@@ -49,9 +56,13 @@ _.Deque = function(arraryData) {
      * @param {any} x
      */
     self.count = function(x) {
-        return _.filter(array, function(n) {
-            return n === x;
-        }).length;
+        var counter = 0;        
+        for(let value of ll.iterator()){
+            if(value === x){
+                counter ++;
+            }
+        }
+        return counter;
     }
     /** 
      * Extend the right side of the deque by appending
@@ -60,8 +71,14 @@ _.Deque = function(arraryData) {
      * @member _.Deque#extend
      */
     self.extend = function(anotherArrary) {
-        array = array.concat(anotherArrary);
-        return self;
+        // anotherArrary = anotherArrary || []
+        // if(anotherArrary.length > 0){
+        //     newll == new _.LinkedList(anotherArrary)
+        //     ll.tail.next = newll.head
+        //     newll.head.prev = ll.tail
+        // }
+
+        // return self;
     }
     // note for concat
     // The concat() method is used to merge two or more arrays. 
@@ -73,10 +90,13 @@ _.Deque = function(arraryData) {
      * @member _.Deque#extendleft
      */
     self.extendleft = function(anotherArrary) {
-        // unshift it will faster?
-        // do this test later
-        array = anotherArrary.concat(array);
-        return self;
+        // anotherArrary = anotherArrary || []
+        // if(anotherArrary.length > 0){
+        //     newll == new _.LinkedList(anotherArrary)
+        //     newll.tail.next = ll.head
+        //     ll.head.prev = tail.tail
+        // }
+        // return self;
     }
 
     /** 
@@ -85,32 +105,10 @@ _.Deque = function(arraryData) {
      * @member _.Deque#reverse
      */
     self.reverse = function() {
-        array.reverse();
+        ll.reverse();
         return self;
     }
-    /** 
-     * Reverse the length of the deque
-     * 
-     * @member _.Deque#length
-     */
-    self.length = function() {
-        return array.length
-    }
-    /** 
-     * Reverse the length of the deque; if byReference is true, it will be shallow copy; 
-     * it means if you change the index of the returned array, it will affect this deque
-     * @param {bool} byReference return value is referenced or not
-     * @member _.Deque#getValues
-     * 
-     */
-    self.getValues = function(byReference) {
-        byReference = byReference || false;
-
-        if (byReference) {
-            return array;
-        }
-        return array.slice(0)
-    }
+    
     /** 
      * return a shallow copy of this deque
      * @member _.Deque#copy
@@ -129,7 +127,9 @@ _.Deque = function(arraryData) {
         if(array.length === 0 && silence === false){
             throw new Error("Index Exception")
         }
-        return array.pop()
+        var r = ll.tail;
+        ll.delete_by_node(r)
+        return r.val
     }
     /** 
      * Remove and return an element from the left side of the deque.
@@ -138,10 +138,12 @@ _.Deque = function(arraryData) {
      * @param {bool} silence need to raise IndexException or not
      */
     self.popleft = function(silence){
-        if(array.length === 0 && silence === false){
+        if(ll.length === 0 && silence === false){
             throw new Error("Index Exception")
         }
-        return array.shift()
+        var r = ll.head;
+        ll.delete_by_node(r)
+        return r.val
     }
     // Rotate the deque n steps to the right. 
     // If n is negative, rotate to the left.
@@ -161,6 +163,10 @@ _.Deque = function(arraryData) {
             self.append(self.popleft())
             step++;
         }
+    }
+
+    self.toString = function () {
+        return "Deque: " + ll.toString()
     }
 
 

@@ -62,6 +62,14 @@ _.LinkedList.prototype.find = function (val) {
     }
 }
 
+_.LinkedList.prototype.iterator = function* () {
+    var cursor = this.head
+    while(cursor){
+        yield cursor.val
+        cursor = cursor.next
+    }
+}
+
 _.LinkedList.prototype.toString = function (linode) {
     var r = [];
     var cursor = this.head;

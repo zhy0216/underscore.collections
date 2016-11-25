@@ -7,19 +7,19 @@ describe('Deque', function() {
     var data = [1, 2, 3];
     it('#constructor', function() {
         var deque = new _.Deque(data);
-        assert.equal(deque.length(), 3);
+        assert.equal(deque.length, 3);
     })
 
     it('#appendleft', function() {
         var deque = new _.Deque(data);
         deque.appendleft(0);
-        assert.equal(deque.getValues()[0], 0);
+        assert.equal(deque.popleft(), 0);
     })
 
     it('#clear', function() {
         var deque = new _.Deque(data);
         deque.clear();
-        assert.equal(deque.length(), 0);
+        assert.equal(deque.length, 0);
     })
 
     it('#count', function() {
@@ -50,7 +50,7 @@ describe('Deque', function() {
     it('#reverse', function() {
         var deque = new _.Deque(data);
         deque.reverse();
-        assert.equal(deque.getValues()[0], 3);
+        assert.equal(deque.toString(), 3);
     })
 
 })
