@@ -50,7 +50,7 @@ describe('Deque', function() {
     it('#reverse', function() {
         var deque = new _.Deque(data);
         deque.reverse();
-        assert.equal(deque.toString(), 3);
+        assert.equal(deque.toString(), 'Deque: [3] <-> [2] <-> [1]');
     })
 
 })

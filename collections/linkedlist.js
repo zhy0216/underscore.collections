@@ -70,6 +70,23 @@ _.LinkedList.prototype.iterator = function* () {
     }
 }
 
+_.LinkedList.prototype.reverse = function (){
+    var cursor = this.head;
+    var temp;
+    while(cursor){
+        temp = cursor.next;
+        cursor.next = cursor.prev;
+        cursor.prev = cursor.next;
+        cursor = temp;
+    }
+    temp = this.head;
+    temp.prev = this.tail.prev;
+    this.head = this.tail;
+    this.head.prev = null;
+    this.tail = temp;
+    this.tail.next = null;
+}
+
 _.LinkedList.prototype.toString = function (linode) {
     var r = [];
     var cursor = this.head;

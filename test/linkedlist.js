@@ -33,6 +33,13 @@ describe('LinkedList', function() {
         assert.equal(linkedlist.toString(), "[5] <-> [2] <-> [4] <-> [6]");
     })
 
+    it('#reverse', function(){
+        var linkedlist = new _.LinkedList(data);
+        linkedlist.reverse()
+        assert.equal(linkedlist.toString(), "[6] <-> [4] <-> [7] <-> [2] <-> [5] <-> [9]");
+
+    })
+
 
 })
 
